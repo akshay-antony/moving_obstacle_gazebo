@@ -1,3 +1,4 @@
+<?xml version='1.0'?>
 <sdf version='1.6'>
   <world name='default'>
     <light name='sun' type='directional'>
@@ -901,10 +902,13 @@
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <actor name='Construction Barrel'>
+
+<!-- moving obstacles start-->
+
+    <model name='Construction Barrel_0'>
       <link name='link'>
         <inertial>
-          <pose frame=''>0 0 0.4 0 -0 0</pose>
+          <pose frame=''>0 0 0.0 0 -0 0</pose>
           <mass>500</mass>
           <inertia>
             <ixx>51.2096</ixx>
@@ -942,96 +946,99 @@
             </mesh>
           </geometry>
         </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
+        <kinematic>1</kinematic>
       </link>
-      <script>
-        <loop>1</loop>
-        <auto_start>1</auto_start>
-        <trajectory id='0' type='square' tension='0'>
-          <waypoint>
-            <time>1</time>
-            <pose>3 -7.5 0.5 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>3</time>
-            <pose>3 -4.5 0.5 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>5</time>
-            <pose>3 -7.5 0.5 0 -0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
-      <pose frame=''>-11.1348 6.14669 0 0 -0 0</pose>
-    </actor>
-    <actor name='Construction Barrel_0'>
-      <link name='link'>
-        <inertial>
-          <pose frame=''>0 0 0.4 0 -0 0</pose>
-          <mass>500</mass>
-          <inertia>
-            <ixx>51.2096</ixx>
-            <iyy>51.2096</iyy>
-            <izz>25</izz>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyz>0</iyz>
-          </inertia>
-        </inertial>
-        <collision name='collision'>
-          <geometry>
-            <mesh>
-              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
-            </mesh>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <mesh>
-              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <script>
-        <loop>1</loop>
-        <auto_start>1</auto_start>
-        <trajectory id='1' type='square' tension='0'>
-          <waypoint>
-            <time>1</time>
-            <pose>0 7.5 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>3</time>
-            <pose>0 2.5 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>5</time>
-            <pose>0 7.5 0 0 -0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
+      <plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>link</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
       <pose frame=''>0.098141 -4.05082 0 0 -0 0</pose>
-    </actor>
-    <actor name='Construction Cone'>
+    </model>
+
+    <model name='Construction Barrel_1'>
+      <link name='link'>
+        <inertial>
+          <pose frame=''>0 0 0.0 0 -0 0</pose>
+          <mass>500</mass>
+          <inertia>
+            <ixx>51.2096</ixx>
+            <iyy>51.2096</iyy>
+            <izz>25</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://construction_barrel/meshes/construction_barrel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <kinematic>1</kinematic>
+      </link>
+      <plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>link</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
+      <pose frame=''>-4.098141 4.05082 0 0 -0 0</pose>
+    </model>
+
+
+
+
+    <model name='Construction Cone'>
       <link name='link'>
         <collision name='collision'>
           <geometry>
@@ -1078,100 +1085,78 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <script>
-        <loop>1</loop>
-        <auto_start>1</auto_start>
-        <trajectory id='2' type='square' tension='0'>
-          <waypoint>
-            <time>1</time>
-            <pose>-5 7.5 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>3</time>
-            <pose>-2.5 7.5 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>5</time>
-            <pose>-5 7.5 0 0 -0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
+
+      <plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>link</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
       <pose frame=''>-7.68178 0.028471 0 0 -0 0</pose>
-    </actor>
-    <actor name='cube_20k'>
-      <link name='link'>
-        <pose frame=''>0 0 0.5 0 -0 0</pose>
-        <collision name='collision'>
+    </model>
+    <model name='cube_20k'>
+      <link name="link">
+        <kinematic>true</kinematic>
+        <collision name="collision">
           <geometry>
-            <mesh>
-              <uri>model://cube_20k/meshes/cube_20k.stl</uri>
-              <scale>0.5 0.5 0.5</scale>
-            </mesh>
+            <box>
+              <size>1 1 1</size>
+            </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
             <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
+              <ode>
+                <mu>0.0</mu>
+                <mu2>0.0</mu2>
+              </ode>
             </friction>
           </surface>
         </collision>
-        <visual name='visual'>
+        <visual name="visual">
           <geometry>
-            <mesh>
-              <uri>model://cube_20k/meshes/cube_20k.stl</uri>
-              <scale>0.5 0.5 0.5</scale>
-            </mesh>
+            <box>
+              <size>1 1 1</size>
+            </box>
           </geometry>
-          <material>
-            <ambient>1 0.5 0 1</ambient>
-            <diffuse>1 1 0.8 1</diffuse>
-            <specular>0.1 0.1 0.1 1</specular>
-            <emissive>0 0 0 0</emissive>
-          </material>
         </visual>
-        <self_collide>0</self_collide>
-        <inertial>
-          <pose frame=''>0 0 0 0 -0 0</pose>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-          <mass>1</mass>
-        </inertial>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
       </link>
-      <script>
-        <loop>1</loop>
-        <auto_start>1</auto_start>
-        <trajectory id='3' type='square' tension='0'>
-          <waypoint>
-            <time>1</time>
-            <pose>-7 -2 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>3</time>
-            <pose>-9.5 -2 0 0 -0 0</pose>
-          </waypoint>
-          <waypoint>
-            <time>5</time>
-            <pose>-7 -2 0 0 -0 0</pose>
-          </waypoint>
-        </trajectory>
-      </script>
+      <plugin name="random" filename="libRandomVelocityPlugin.so">
+
+        <!-- Name of the link in this model that receives the velocity -->
+        <link>link</link>
+
+        <!-- Initial velocity that is applied to the link -->
+        <initial_velocity>0 0.5 0</initial_velocity>
+
+        <!-- Scaling factor that is used to compute a new velocity -->
+        <velocity_factor>0.5</velocity_factor>
+
+        <!-- Time, in seconds, between new velocities -->
+        <update_period>5</update_period>
+
+        <!-- Clamp the Z velocity value to zero. You can also clamp x and
+             y values -->
+        <min_z>0</min_z>
+        <max_z>0</max_z>
+      </plugin>
       <pose frame=''>-9.41878 -4.06039 0 0 -0 0</pose>
-    </actor>
+    </model>
+<!-- moving obstacles finished-->
+
     <model name='Dumpster'>
       <link name='link'>
         <collision name='collision'>
