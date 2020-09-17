@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>husky_gazebo</name>
+  <name>moving_obstacle_gazebo</name>
   <version>0.3.6</version>
   <description>Clearpath Husky Simulator bringup</description>
 
